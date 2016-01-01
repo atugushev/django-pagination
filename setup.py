@@ -58,7 +58,7 @@ setup(
         "Programming Language :: Python :: 3.3",
     ],
     install_requires=[
-        'django >= 1.2',
+        'django >= 1.6, <= 1.9',
     ],
     tests_require=[
         'django-testproject >= 0.1',
