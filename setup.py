@@ -42,7 +42,7 @@ setup(
     long_description=open("README.rst").read(),
     keywords='pagination,django',
     url='https://github.com/zyga/django-pagination',
-    test_suite='linaro_django_pagination.test_project.tests.run_tests',
+    test_suite="linaro_django_pagination.tests.runner.runtests",
     license='BSD',
     packages=find_packages(),
     classifiers=[
