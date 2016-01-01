@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import django
-import doctest
 import sys
 
 from django.conf import settings
@@ -27,7 +26,6 @@ def runtests():
     test_runner = TestRunner()
     failures = test_runner.run_tests(
         ["linaro_django_pagination.tests"],
-        extra_tests=[doctest.DocTestSuite('linaro_django_pagination.tests.test_main')]
     )
     sys.exit(bool(failures))
 
