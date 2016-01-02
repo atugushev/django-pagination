@@ -1,34 +1,22 @@
 #!/usr/bin/env python
+
 import django
+import os
 import sys
 
-from django.conf import settings
+from django.core.management import call_command
 
 
 def runtests():
-    if not settings.configured:
-        # Configure test environment
-        settings.configure(
-            SECRET_KEY='fake-key',
-            INSTALLED_APPS=(
-                'linaro_django_pagination',
-            ),
-        )
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'linaro_django_pagination.tests.settings'
 
     try:
         django.setup()
     except AttributeError:  # for Django 1.6 compatible
         pass
 
-    from django.test.utils import get_runner
-
-    TestRunner = get_runner(settings)
-    test_runner = TestRunner()
-    failures = test_runner.run_tests(
-        ["linaro_django_pagination.tests"],
-    )
+    failures = call_command('test', 'linaro_django_pagination')
     sys.exit(bool(failures))
-
 
 if __name__ == '__main__':
     runtests()

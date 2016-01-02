@@ -30,8 +30,12 @@
 
 from django.core.paginator import Paginator
 from django.http import HttpRequest as DjangoHttpRequest
-from django.test import SimpleTestCase, RequestFactory
 from django.template import Template, Context
+
+try:
+    from django.test import SimpleTestCase
+except ImportError:  # Django 1.2 compatible
+    from django.test import TestCase as SimpleTestCase
 
 from linaro_django_pagination.paginator import InfinitePaginator, FinitePaginator
 from linaro_django_pagination.templatetags.pagination_tags import paginate
@@ -390,6 +394,6 @@ class MiddlewareTestCase(SimpleTestCase):
     """
     def test_get_page_in_request(self):
         middleware = PaginationMiddleware()
-        request = RequestFactory().get('/')
+        request = DjangoHttpRequest()
         middleware.process_request(request)
         self.assertEqual(request.page(''), 1)

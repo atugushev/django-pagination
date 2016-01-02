@@ -29,8 +29,10 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+import os
 from setuptools import setup, find_packages
 
+os.environ['DJANGO_SETTINGS_MODULE'] = 'linaro_django_pagination.tests.settings'
 
 setup(
     name='linaro-django-pagination',
@@ -56,12 +58,6 @@ setup(
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.3",
-    ],
-    install_requires=[
-        'django >= 1.6, <= 1.9',
-    ],
-    tests_require=[
-        'django-testproject >= 0.1',
     ],
     setup_requires=[
         'versiontools >= 1.3.1'
