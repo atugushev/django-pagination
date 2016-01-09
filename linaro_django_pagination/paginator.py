@@ -186,6 +186,7 @@ class FinitePage(InfinitePage):
         """
         try:
             self.paginator.object_list[self.paginator.per_page]
+        # FIXME: this statement is never reached
         except IndexError:
             return False
         return True
